@@ -16,7 +16,7 @@ async function copy() {
 <template>
   <section class="mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-40 pt-28 text-center">
     <!-- Brand mark (in place of ollama's llama) -->
-    <div class="mb-6 font-display text-7xl font-medium leading-none md:text-8xl">nemo</div>
+    <div class="mb-6 font-tentaku text-[5rem] font-normal leading-none md:text-[6.75rem]">nemo</div>
 
     <h1 class="mb-6 font-display text-3xl font-medium md:text-4xl">
       Run it all, locally.

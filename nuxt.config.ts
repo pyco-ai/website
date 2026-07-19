@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/fish.svg' },
-        // Exact ollama font setup — all system, no webfont (SF Pro Rounded headings on Apple).
+        // Tentaku (the "nemo" wordmark) is self-hosted via @font-face in main.css.
       ],
     },
   },
