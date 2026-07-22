@@ -5,7 +5,7 @@
         <h2 class="mb-8 font-display text-4xl font-medium">Works with the tools you already use</h2>
         <p class="mb-10 text-lg text-neutral-950">
           A small, predictable interface that slots into your apps, scripts, and editors.
-          One command to start — then it stays out of your way.
+          One command to start, and it stays out of your way.
         </p>
         <a href="#docs" class="text-base text-neutral-500 underline underline-offset-4 hover:text-neutral-800">Read the docs →</a>
       </div>
