@@ -1,13 +1,18 @@
-# Nemo — landing page
+# Pyco — site
 
-Single-page site in the style of [ollama.com](https://ollama.com): pure-white,
-grayscale, pill buttons, no shadows. The fish logo is the only splash of color.
+Pyco is the company and the runtime; **Nemo** is the model family.
+
+Every page is the same shell: a monospace text column on the left, an animated dithering
+shader on the right. Black on white, no boxes, no shadows — the shader is the only color.
+This mirrors [srothbaum.github.io](https://srothbaum.github.io), minus that site's dark
+mode: this one is light only, so there is no theme toggle, cookie, or `dark:` variant.
 
 ## Stack
 
-- **Nuxt 4** — the framework (file structure, build, static generation)
-- **Vue 3** — single-file components, with reactivity for the mobile menu and copy button
+- **Nuxt 4** — routing, build, static generation
+- **Vue 3** — single-file components
 - **Tailwind CSS v4** — styling, wired in through its Vite plugin
+- **@paper-design/shaders** — the WebGL dithering background
 
 ## Requirements
 
@@ -16,53 +21,64 @@ grayscale, pill buttons, no shadows. The fish logo is the only splash of color.
 ## Run it
 
 ```bash
-npm install      # first time only
-npm run dev      # start the dev server → http://localhost:3000
+npm install
+```
+
+```bash
+npm run dev
 ```
 
 ## Structure
 
 ```
 nemo_website/
-├─ nuxt.config.ts          # Nuxt + Tailwind wiring, <head> (title, favicon, font)
-├─ package.json
-├─ public/
-│  └─ fish.svg             # logo, served at /fish.svg (also the favicon)
+├─ nuxt.config.ts              # Nuxt + Tailwind wiring, <head>, prerender routes
+├─ public/fish.svg             # favicon
 └─ app/
-   ├─ app.vue              # composes the page from the sections below
-   ├─ assets/css/main.css  # Tailwind import + theme tokens (brand color, font)
-   └─ components/
-      ├─ TheHeader.vue     # sticky nav + reactive mobile menu
-      ├─ HeroSection.vue   # headline, CTAs, terminal snippet, copy button
-      ├─ FeatureGrid.vue   # data for the three cards
-      ├─ FeatureCard.vue   # reusable card (title + text props)
-      ├─ CtaStrip.vue      # closing call-to-action
-      └─ TheFooter.vue
+   ├─ app.vue                  # <NuxtLayout> + <NuxtPage>, and the <html> background
+   ├─ assets/css/main.css      # Tailwind import + mono font token
+   ├─ layouts/default.vue      # the split shell: text column + shader + legal line
+   ├─ components/
+   │  └─ DitheringShader.vue   # wraps @paper-design/shaders' ShaderMount
+   └─ pages/
+      ├─ index.vue             # PYCO — tagline, what we build, links
+      ├─ privacy.vue           # privacy policy
+      └─ download/[os].vue     # unpublished mac | linux | windows install flow
 ```
 
-Components in `app/components/` are auto-imported by Nuxt — no import lines needed.
+Components under `app/` are auto-imported by Nuxt — no import lines needed.
+
+The `Privacy` link and copyright sit in `layouts/default.vue`, so they appear on every
+page below whatever nav row that page defines.
 
 ## Where to edit
 
-- **Words:** the text lives in the `.vue` component for each section (placeholder copy — swap in your real text).
-- **Feature cards:** the `features` array in `FeatureGrid.vue`.
-- **Install command:** the `cmd` value in `HeroSection.vue`.
-- **Colors / font:** the `@theme` block in `app/assets/css/main.css`. `--color-brand`
-  becomes `text-brand` / `bg-brand`; `--font-display` becomes `font-display`.
-- **The fonts** mirror ollama's exactly — all system, no webfont: a rounded display
-  (`SF Pro Rounded`, set via `--font-display`) that renders rounded on Apple and falls back to
-  the system sans elsewhere, a neutral system sans for body, and the default mono for code.
+- **What we build** (home): the `work` array in `pages/index.vue`.
+- **Privacy policy**: the `sections` array in `pages/privacy.vue`. It currently states
+  that the site collects nothing, which is true only while there is no analytics script,
+  no form, and no hosted endpoint. Adding any of those means editing this page too.
+- **Install commands, installer links, OS requirements**: `OS_DATA` in `pages/download/[os].vue`.
+  The route is not currently linked or prerendered.
+- **Shader colors**: the `color-front` / `color-back` props in `layouts/default.vue`.
+  Front is `hsl(228, 100%, 70%)` / `#6685FF`; back is white, and must stay in step with
+  the `bg-white` on the shader's wrapper or the panel flashes before the canvas paints.
+- **Font**: `--font-mono` in `app/assets/css/main.css`.
 
-## Add more pages later
+## Still placeholder
 
-Create an `app/pages/` directory and move the landing page to `app/pages/index.vue`,
-then put `<NuxtPage />` in `app.vue`. Nuxt turns each file in `pages/` into a route.
+`pyco.ai` is not live yet, so the install commands do not resolve. The GitHub link, both
+installer download buttons, and the two Linux script links all point at `#`.
 
-## Deploy (free)
+The three entries on the home page (`nemo-1`, `krab`, `orqa`) are real; nemo-1 has no
+published sizes, context length, or benchmarks yet. The download flow still describes
+installing a `pyco` runtime, which does not exist as a shipped artifact — see the note
+in `pages/download/[os].vue`.
+
+## Deploy
 
 ```bash
-npm run generate    # static output in .output/public
+npm run generate
 ```
 
-Drop `.output/public` on Netlify, Cloudflare Pages, GitHub Pages, or Vercel.
-(Vercel and Netlify also detect Nuxt automatically if you connect the repo.)
+Static output lands in `.output/public` — drop it on Netlify, Cloudflare Pages, GitHub
+Pages, or Vercel. The home, About, and Privacy pages are prerendered.

@@ -1,7 +1,12 @@
 <template>
-  <div class="flex min-h-screen flex-col bg-white text-neutral-950">
-    <TheHeader />
+  <NuxtLayout>
     <NuxtPage />
-    <TheFooter />
-  </div>
+  </NuxtLayout>
 </template>
+
+<style>
+/* Document background, so overscroll/rubber-band areas match the page too. */
+html {
+  background-color: #fff;
+}
+</style>

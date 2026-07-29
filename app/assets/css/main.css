@@ -1,41 +1,7 @@
 @import "tailwindcss";
 
-/* Tentaku — self-hosted display font for the "nemo" wordmark */
-@font-face {
-  font-family: "Tentaku";
-  src: url("/fonts/tentaku-regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ------------------------------------------------------------------
-   Tailwind v4 CSS-first config. Tokens defined here become utilities:
-   --font-display  -> font-display
-   --color-brand   -> text-brand / bg-brand / ring-brand
-   ------------------------------------------------------------------ */
 @theme {
-  /* Exact ollama stack: SF Pro Rounded — rounded on Apple, system sans elsewhere */
-  --font-display: "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  /* Tentaku — self-hosted; the "nemo" wordmark */
-  --font-tentaku: "Tentaku", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
-  --color-brand: #445ec2; /* the one accent, borrowed from the logo gradient */
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  /* Exact ollama base stack (Tailwind v4 default sans) */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-/* The single chromatic moment in the chrome: a brand-blue focus ring */
-:focus-visible {
-  outline: 2px solid var(--color-brand);
-  outline-offset: 2px;
-  border-radius: 4px;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 @media (prefers-reduced-motion: reduce) {
