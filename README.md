@@ -69,4 +69,4 @@ The privacy page is accurate only while the site has no analytics, forms, accoun
 
 ## Deployment
 
-Netlify builds the `master` branch with `npm run generate` and publishes `.output/public`. The security and cache headers live in `netlify.toml` so deployment settings stay versioned with the site.
+Netlify builds the `master` branch with `npm run generate` and publishes `dist`; plain local generation writes `.output/public`. The security and cache headers live in `netlify.toml` so deployment settings stay versioned with the site.
