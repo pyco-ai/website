@@ -41,7 +41,6 @@ const props = withDefaults(
 const container = ref<HTMLDivElement | null>(null)
 let mount: ShaderMount | null = null
 
-/** The shader takes a flat uniform bag; rebuild it whenever a prop changes. */
 const uniforms = computed(() => ({
   u_colorBack: getShaderColorFromString(props.colorBack),
   u_colorFront: getShaderColorFromString(props.colorFront),

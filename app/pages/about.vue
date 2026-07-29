@@ -1,6 +1,12 @@
 <script setup lang="ts">
-useHead({ title: 'About' })
+const description = 'Why Pyco is searching for smaller units of intelligence that can scale.'
 
+useSeoMeta({
+  title: 'About',
+  description,
+  ogTitle: 'About',
+  ogDescription: description,
+})
 </script>
 
 <template>

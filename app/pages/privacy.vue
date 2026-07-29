@@ -1,9 +1,13 @@
 <script setup lang="ts">
-useHead({ title: 'Privacy' })
+const description = 'How Pyco handles data and protects the privacy of visitors to pyco.ai.'
 
-// Written to describe this site as it actually is: prerendered static files, no cookies,
-// no analytics, no forms. If any of that changes — an analytics script, a signup form,
-// a hosted krab endpoint — this page has to change with it.
+useSeoMeta({
+  title: 'Privacy',
+  description,
+  ogTitle: 'Privacy',
+  ogDescription: description,
+})
+
 const updated = 'July 2026'
 
 const sections: { heading: string; body: string }[] = [
@@ -13,7 +17,7 @@ const sections: { heading: string; body: string }[] = [
   },
   {
     heading: 'Server logs',
-    body: 'Our hosting provider may keep short-lived request logs — IP address, user agent, and the URL requested — as a normal part of serving and protecting the site. We do not use those logs to build a profile of you, and we do not combine them with anything else.',
+    body: 'Our hosting provider may keep short-lived request logs, including IP address, user agent, and the URL requested, as a normal part of serving and protecting the site. We do not use those logs to build a profile of you, and we do not combine them with anything else.',
   },
   {
     heading: 'If you email us',
@@ -25,7 +29,7 @@ const sections: { heading: string; body: string }[] = [
   },
   {
     heading: 'Your rights',
-    body: 'If you are in the EU, UK, or California, you have the right to ask what personal information we hold about you, to have it corrected, and to have it deleted. Since the only thing we are likely to hold is an email you sent us, such a request is usually quick to honour — write to the address below.',
+    body: 'If you are in the EU, UK, or California, you have the right to ask what personal information we hold about you, to have it corrected, and to have it deleted. Since the only thing we are likely to hold is an email you sent us, such a request is usually quick to honour; write to the address below.',
   },
   {
     heading: 'Changes',

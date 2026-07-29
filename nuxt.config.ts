@@ -2,18 +2,12 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-06-01',
-  devtools: { enabled: true },
-
-  // Global stylesheet (imports Tailwind)
+  devtools: { enabled: false },
   css: ['~/assets/css/main.css'],
-
-  // Tailwind v4 integrates through its Vite plugin (Nuxt uses Vite under the hood)
   vite: {
     plugins: [tailwindcss()],
   },
 
-  // Fully static output. The download route remains in source until installers are ready,
-  // but is deliberately not linked or prerendered.
   nitro: {
     prerender: {
       crawlLinks: true,
@@ -29,14 +23,18 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Pyco builds small language models and the tooling that makes them cheap to run.' },
-        { property: 'og:title', content: 'Pyco' },
-        { property: 'og:description', content: 'Pyco builds small language models and the tooling that makes them cheap to run.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://pyco.ai/' },
+        { property: 'og:site_name', content: 'Pyco' },
+        { property: 'og:image', content: 'https://pyco.ai/og.png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:alt', content: 'pyco.ai over a blue dither pattern.' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'theme-color', content: '#6685ff' },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/fish.svg' },
-        { rel: 'canonical', href: 'https://pyco.ai/' },
       ],
     },
   },

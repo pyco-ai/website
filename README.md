@@ -1,84 +1,72 @@
-# Pyco — site
+# Pyco website
 
-Pyco is the company and the runtime; **Nemo** is the model family.
+Pyco is the company and the runtime. Nemo is the model family.
 
-Every page is the same shell: a monospace text column on the left, an animated dithering
-shader on the right. Black on white, no boxes, no shadows — the shader is the only color.
-This mirrors [srothbaum.github.io](https://srothbaum.github.io), minus that site's dark
-mode: this one is light only, so there is no theme toggle, cookie, or `dark:` variant.
+Every page uses the same shell: a monospace text column beside an animated dithering shader. The site is light-only, does not set cookies, and does not load analytics or third-party scripts.
 
 ## Stack
 
-- **Nuxt 4** — routing, build, static generation
-- **Vue 3** — single-file components
-- **Tailwind CSS v4** — styling, wired in through its Vite plugin
-- **@paper-design/shaders** — the WebGL dithering background
+- Nuxt 4 for routing and static generation
+- Vue 3 for components
+- Tailwind CSS v4 for styling
+- `@paper-design/shaders` for the WebGL dithering background
 
 ## Requirements
 
-[Node.js](https://nodejs.org) 20 or newer.
+Use Node.js 20 or newer.
 
-## Run it
+## Local development
 
 ```bash
 npm install
-```
-
-```bash
 npm run dev
 ```
 
-## Structure
+The development server is available at `http://localhost:3000` by default.
 
-```
-nemo_website/
-├─ nuxt.config.ts              # Nuxt + Tailwind wiring, <head>, prerender routes
-├─ public/fish.svg             # favicon
-└─ app/
-   ├─ app.vue                  # <NuxtLayout> + <NuxtPage>, and the <html> background
-   ├─ assets/css/main.css      # Tailwind import + mono font token
-   ├─ layouts/default.vue      # the split shell: text column + shader + legal line
-   ├─ components/
-   │  └─ DitheringShader.vue   # wraps @paper-design/shaders' ShaderMount
-   └─ pages/
-      ├─ index.vue             # PYCO — tagline, what we build, links
-      ├─ privacy.vue           # privacy policy
-      └─ download/[os].vue     # unpublished mac | linux | windows install flow
-```
-
-Components under `app/` are auto-imported by Nuxt — no import lines needed.
-
-The `Privacy` link and copyright sit in `layouts/default.vue`, so they appear on every
-page below whatever nav row that page defines.
-
-## Where to edit
-
-- **What we build** (home): the `work` array in `pages/index.vue`.
-- **Privacy policy**: the `sections` array in `pages/privacy.vue`. It currently states
-  that the site collects nothing, which is true only while there is no analytics script,
-  no form, and no hosted endpoint. Adding any of those means editing this page too.
-- **Install commands, installer links, OS requirements**: `OS_DATA` in `pages/download/[os].vue`.
-  The route is not currently linked or prerendered.
-- **Shader colors**: the `color-front` / `color-back` props in `layouts/default.vue`.
-  Front is `hsl(228, 100%, 70%)` / `#6685FF`; back is white, and must stay in step with
-  the `bg-white` on the shader's wrapper or the panel flashes before the canvas paints.
-- **Font**: `--font-mono` in `app/assets/css/main.css`.
-
-## Still placeholder
-
-`pyco.ai` is not live yet, so the install commands do not resolve. The GitHub link, both
-installer download buttons, and the two Linux script links all point at `#`.
-
-The three entries on the home page (`nemo-1`, `krab`, `orqa`) are real; nemo-1 has no
-published sizes, context length, or benchmarks yet. The download flow still describes
-installing a `pyco` runtime, which does not exist as a shipped artifact — see the note
-in `pages/download/[os].vue`.
-
-## Deploy
+## Production build
 
 ```bash
 npm run generate
 ```
 
-Static output lands in `.output/public` — drop it on Netlify, Cloudflare Pages, GitHub
-Pages, or Vercel. The home, About, and Privacy pages are prerendered.
+The generated static site is written to `.output/public`.
+
+## Structure
+
+```text
+website/
+├─ nuxt.config.ts
+├─ netlify.toml
+├─ public/
+│  ├─ fish.svg
+│  ├─ og.png
+│  ├─ robots.txt
+│  └─ sitemap.xml
+└─ app/
+   ├─ app.vue
+   ├─ assets/css/main.css
+   ├─ components/DitheringShader.vue
+   ├─ layouts/default.vue
+   └─ pages/
+      ├─ index.vue
+      ├─ about.vue
+      └─ privacy.vue
+```
+
+Components under `app/` are auto-imported by Nuxt.
+
+## Where to edit
+
+- Home page projects and copy: `app/pages/index.vue`
+- About copy: `app/pages/about.vue`
+- Privacy policy: `app/pages/privacy.vue`
+- Shared navigation, footer, and shader settings: `app/layouts/default.vue`
+- Global styling: `app/assets/css/main.css`
+- Default metadata and prerender routes: `nuxt.config.ts`
+
+The privacy page is accurate only while the site has no analytics, forms, accounts, or hosted endpoints. Update it if any of those are added.
+
+## Deployment
+
+Netlify builds the `master` branch with `npm run generate` and publishes `.output/public`. The security and cache headers live in `netlify.toml` so deployment settings stay versioned with the site.
