@@ -12,7 +12,7 @@ export interface PycoLogoFieldOptions {
   reducedMotion?: boolean
 }
 
-const DRIFT = 3.6
+const DRIFT = 5.4
 const FORM = 4.4
 const HOLD = 2.4
 const DISSOLVE = 3.8
