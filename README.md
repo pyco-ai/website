@@ -1,15 +1,15 @@
 # Pyco website
 
-Pyco is the company and the runtime. Nemo is the model family.
+Pyco is the company. courte, its product, predicts how fast a model architecture will run on given hardware.
 
-Every page uses the same shell: a monospace text column beside an animated dithering shader. The site is light-only, does not set cookies, and does not load analytics or third-party scripts.
+Every page uses the same shell: a monospace text column beside the moving pyco logo: a dot field that gathers its own dots into the word, holds, then returns each dot to where it came from. The site is light-only, does not set cookies, and does not load analytics, third-party scripts or third-party fonts (Geist Mono is self-hosted).
 
 ## Stack
 
 - Nuxt 4 for routing and static generation
 - Vue 3 for components
 - Tailwind CSS v4 for styling
-- `@paper-design/shaders` for the WebGL dithering background
+- Geist Mono (SIL OFL), self-hosted from `public/fonts/`
 
 ## Requirements
 
@@ -39,14 +39,16 @@ website/
 ├─ nuxt.config.ts
 ├─ netlify.toml
 ├─ public/
-│  ├─ fish.svg
-│  ├─ og.png
+│  ├─ favicon.ico, pyco-favicon.svg, apple-touch-icon-180.png
+│  ├─ og-image-1200x630.png
+│  ├─ pyco-lockup-blue.svg
+│  ├─ fonts/GeistMono-Regular.woff2, OFL.txt
 │  ├─ robots.txt
 │  └─ sitemap.xml
 └─ app/
    ├─ app.vue
    ├─ assets/css/main.css
-   ├─ components/DitheringShader.vue
+   ├─ components/PycoLogoField.vue, pycoLogoField.ts
    ├─ layouts/default.vue
    └─ pages/
       ├─ index.vue
@@ -61,7 +63,7 @@ Components under `app/` are auto-imported by Nuxt.
 - Home page projects and copy: `app/pages/index.vue`
 - About copy: `app/pages/about.vue`
 - Privacy policy: `app/pages/privacy.vue`
-- Shared navigation, footer, and shader settings: `app/layouts/default.vue`
+- Shared navigation, footer, and moving-logo settings: `app/layouts/default.vue`
 - Global styling: `app/assets/css/main.css`
 - Default metadata and prerender routes: `nuxt.config.ts`
 

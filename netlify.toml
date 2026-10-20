@@ -20,6 +20,6 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/og.png"
+  for = "/og-image-1200x630.png"
   [headers.values]
     Cache-Control = "public, max-age=604800"

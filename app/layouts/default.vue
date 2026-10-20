@@ -48,8 +48,10 @@ onBeforeUnmount(() => {
     >
       <header class="mb-8">
         <h1 class="text-lg font-normal">
-          <span v-if="atHome">pyco.ai</span>
-          <NuxtLink v-else to="/" class="hover:underline">pyco.ai</NuxtLink>
+          <img v-if="atHome" src="/pyco-lockup-blue.svg" alt="pyco" width="137" height="40" class="h-10 w-auto">
+          <NuxtLink v-else to="/" class="inline-block">
+            <img src="/pyco-lockup-blue.svg" alt="pyco" width="137" height="40" class="h-10 w-auto">
+          </NuxtLink>
         </h1>
       </header>
 
@@ -86,18 +88,7 @@ onBeforeUnmount(() => {
       aria-hidden="true"
     >
       <ClientOnly>
-        <LazyDitheringShader
-          color-back="hsl(0, 0%, 100%)"
-          color-front="hsl(228, 100%, 70%)"
-          shape="simplex"
-          type="4x4"
-          :px-size="3"
-          :offset-x="0"
-          :offset-y="0"
-          :scale="0.8"
-          :rotation="0"
-          :speed="reducedMotion ? 0 : 0.1"
-        />
+        <LazyPycoLogoField :reduced-motion="reducedMotion" />
         <template #fallback>
           <div class="h-full w-full" />
         </template>
