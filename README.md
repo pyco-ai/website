@@ -42,7 +42,7 @@ website/
 │  ├─ favicon.ico, pyco-favicon.svg, apple-touch-icon-180.png
 │  ├─ og-image-1200x630.png
 │  ├─ pyco-lockup-blue.svg
-│  ├─ fonts/GeistMono-Regular.woff2, OFL.txt
+│  ├─ fonts/GeistMono-Regular.woff2, GeistMono-Italic.woff2, OFL.txt
 │  ├─ robots.txt
 │  └─ sitemap.xml
 └─ app/

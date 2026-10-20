@@ -26,7 +26,7 @@ const work = [
 
     <dl class="space-y-4 sm:grid sm:grid-cols-[minmax(0,auto)_auto_auto] sm:justify-start sm:gap-x-6 sm:gap-y-1 sm:space-y-0">
       <div v-for="item in work" :key="item.name" class="grid sm:contents">
-        <dt>{{ item.name }}</dt>
+        <dt class="italic">{{ item.name }}</dt>
         <dd>{{ item.does }}</dd>
         <dd class="opacity-60">{{ item.status }}</dd>
       </div>
