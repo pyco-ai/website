@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mountPycoLogoField } from './pycoLogoField'
+import { mountPycoLogoField } from '~/utils/pycoLogoField'
 
 const props = withDefaults(
   defineProps<{

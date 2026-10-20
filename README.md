@@ -48,7 +48,8 @@ website/
 └─ app/
    ├─ app.vue
    ├─ assets/css/main.css
-   ├─ components/PycoLogoField.vue, pycoLogoField.ts
+   ├─ components/PycoLogoField.vue
+   ├─ utils/pycoLogoField.ts
    ├─ layouts/default.vue
    └─ pages/
       ├─ index.vue
