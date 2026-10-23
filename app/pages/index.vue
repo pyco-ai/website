@@ -10,6 +10,7 @@ useSeoMeta({
 
 const work = [
   { name: 'courte', does: 'Architecture latency prediction', status: 'Pre-release' },
+  { name: 'sen', does: 'Hardware-efficient neural primitive discovery', status: 'Pre-release' },
 ] as const
 </script>
 
